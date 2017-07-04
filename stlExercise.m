@@ -107,7 +107,6 @@ testFeatures = feedForwardAutoencoder(opttheta, hiddenSize, inputSize, ...
 %%======================================================================
 %% STEP 4: Train the softmax classifier
 
-softmaxModel = struct;  
 %% ----------------- YOUR CODE HERE ----------------------
 %  Use softmaxTrain.m from the previous exercise to train a multi-class
 %  classifier. 
@@ -116,14 +115,10 @@ softmaxModel = struct;
 
 % You need to compute softmaxModel using softmaxTrain on trainFeatures and
 % trainLabels
-
-
-
-
-
-
-
-
+options = struct;
+lambda = 1e-4;
+softmaxModel = softmaxTrain(hiddenSize, numLabels, lambda, ...
+                            trainFeatures, trainLabels, options);
 
 
 %% -----------------------------------------------------
@@ -135,18 +130,7 @@ softmaxModel = struct;
 %% ----------------- YOUR CODE HERE ----------------------
 % Compute Predictions on the test set (testFeatures) using softmaxPredict
 % and softmaxModel
-
-
-
-
-
-
-
-
-
-
-
-
+pred = softmaxPredict(softmaxModel, testFeatures);
 
 
 
